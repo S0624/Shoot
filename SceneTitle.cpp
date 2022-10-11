@@ -23,5 +23,6 @@ SceneBase* SceneTitle::update()
 void SceneTitle::draw()
 {
 	DrawString(620, 380, "タイトル画面", GetColor(255, 255, 255));			//タイトル画面の表示
+	
 	DrawBox(0, 0, 25, 25, GetColor(255,255,255), false);    // 四角形を描画
 }
