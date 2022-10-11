@@ -9,10 +9,10 @@ public:
 	virtual void init(){}
 	virtual void end(){}
 
-	virtual void update(){}
+	virtual SceneBase* update() { return this; }
 	virtual void draw(){}
 
 	virtual bool isEnd() { return false; }
-private:
+protected:
 
 };
