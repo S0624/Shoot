@@ -19,12 +19,14 @@ SceneMain::SceneMain()
 void SceneMain::init()
 {
 	m_player.init();
+	m_player.setMain(this);
+
 	m_enemy.init();
+	m_enemy.setMain(this);
 }
 
 void SceneMain::end()
 {
-	//m_player.end();
 	for (auto& pShot : m_pShotVt)
 	{
 		assert(pShot);				//バグがあったらわざと止める処理
@@ -76,6 +78,9 @@ void SceneMain::draw()
 		pShot->draw();
 	}
 	DrawString(0, 0, "メイン画面", GetColor(255, 255, 255));
+
+	//現在存在している玉の数を表示
+	DrawFormatString(100, 0, GetColor(0, 255, 255), "弾の数:%d", m_pShotVt.size());
 }
 
 bool SceneMain::createShotPlayer(Vec2 pos)
