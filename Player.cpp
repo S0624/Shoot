@@ -2,29 +2,47 @@
 #include"game.h"
 #include "Player.h"
 
+#include "SceneMain.h"
 
 namespace
 {
-	constexpr int kpos_y = 660;			//プレイヤー縦の大きさ
-	constexpr int kSpeed = 5;			//プレイヤーの移動速度
+	constexpr float kSpeed = 5.0f;			//プレイヤーの移動速度
+
+	constexpr int kShotInterval = 16;		//ショットの発射間隔
 }
 
 Player::Player()
 {
-	m_pos.x = 620;
-	m_vec = 0;
-	m_size.x = 40;
-}
-
-Player:: ~Player()
-{
-
+	m_pMain = nullptr;
+	m_shotInterval = 0;
 }
 
 void Player::init()
 {
-	// パッド(もしくはキーボード)からの入力を取得する
+	m_pos.x = 620;
+	m_pos.y = 660;
+	m_vec.x = 0.0f;
+	m_size.x = 40;
+}
+
+void Player::update()
+{
 	int padState = GetJoypadInputState(DX_INPUT_KEY_PAD1);
+
+	////ショット処理
+	//m_shotInterval--;
+	//if (m_shotInterval < 0)m_shotInterval = 0;
+
+	//if (m_shotInterval <= 0)
+	//{
+	//	if (padState & PAD_INPUT_2)
+	//	{
+	//		if (m_pMain->createShotPlayer(getPos()))
+	//		{
+	//			m_shotInterval = kShotInterval;
+	//		}
+	//	}
+	//}
 
 	if (padState & PAD_INPUT_LEFT)				//左に移動する
 	{
@@ -46,12 +64,7 @@ void Player::init()
 	}
 }
 
-void Player::update()
-{
-
-}
-
 void Player::draw()
 {
-	DrawBox(m_pos.x, kpos_y, m_pos.x + m_size.x, kpos_y + m_size.x, GetColor(255, 255, 255), false);
+	DrawBox(m_pos.x, m_pos.y, m_pos.x + m_size.x, m_pos.y + m_size.x, GetColor(255, 255, 255), false);
 }
