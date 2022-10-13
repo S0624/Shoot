@@ -1,6 +1,7 @@
 #pragma once
 
-#include"SceneBase.h"
+#include "SceneTitle.h"
+#include "SceneMain.h"
 
 class SceneManager
 {
@@ -17,7 +18,8 @@ public:
 	SceneManager();
 	virtual ~SceneManager(){}
 
-	void init(SceneKind kind = kSceneKindTitle);
+	//void init(SceneKind kind = kSceneKindTitle);
+	void init(SceneKind kind = kSceneKindMain);
 	void end();
 
 	void update();
@@ -25,5 +27,7 @@ public:
 
 private:
 	SceneKind	m_kind;			//シーンの種類
-	SceneBase* m_pScene;		//ポインタでシーンを渡す
+	
+	SceneTitle m_title;
+	SceneMain m_main;
 };
