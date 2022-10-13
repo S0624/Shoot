@@ -7,17 +7,16 @@ SceneTitle::SceneTitle()
 	m_isEnd = false;
 }
 
-SceneBase* SceneTitle::update()
+void SceneTitle::update()
 {
 
-	int padState = GetJoypadInputState(DX_INPUT_KEY_PAD1);
-	if (padState & PAD_INPUT_1)
-	{
-		//main‚ÉØ‚è‘Ö‚¦
-		return(new SceneMain);
-	}
-	return this;
-
+	//int padState = GetJoypadInputState(DX_INPUT_KEY_PAD1);
+	//if (padState & PAD_INPUT_1)
+	//{
+	//	//main‚ÉØ‚è‘Ö‚¦
+	//	m_isEnd = true;
+	//}
+	
 }
 
 void SceneTitle::draw()

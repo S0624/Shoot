@@ -10,7 +10,7 @@ public:
 	virtual void init()override { m_isEnd = false; }
 	virtual void end()override {}
 
-	virtual SceneBase* update()override;
+	virtual void update()override;
 	virtual void draw() override;
 
 	virtual bool isEnd()override { return m_isEnd; }
