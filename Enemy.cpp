@@ -42,7 +42,7 @@ void Enemy::update()
 	//		}
 	//	}
 	//}
-
+#if false			//デバッグ用に動かないようにする
 	m_pos.x += m_vec.x;										//エネミーの移動
 
 	if (m_pos.x < 0.0f)										//画面外に行かないように設定
@@ -56,6 +56,7 @@ void Enemy::update()
 		m_pos.x = Game::kScreenWindth - m_size.x;
 		m_vec.x *= -1.0f;
 	}
+#endif
 
 }
 
@@ -63,6 +64,6 @@ void Enemy::draw()
 {
 	DrawBox(m_pos.x, m_pos.y, m_pos.x + m_size.x, m_pos.y + m_size.x, GetColor(255, 0, 0), false);
 	//DrawBox(getPos().x, getPos().y, getPos().x + m_size.x, getPos().y + m_size.x, GetColor(0, 255, 0), false);
-	DrawBox(getPos().x +5, getPos().y + 5, getPos().x + m_size.x, getPos().y + m_size.x, GetColor(0, 255, 0), false);		//デバック
-	
+	DrawBox(getPos().x +5, getPos().y + 5, getPos().x + m_size.x, getPos().y + m_size.x, GetColor(0, 255, 0), false);		//チェック用
+	DrawFormatString(0, 450, GetColor(0, 255, 255), "敵座標:%f %f", getPos().x, getPos().y);
 }
