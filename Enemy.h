@@ -18,6 +18,8 @@ public:
 
 	Vec2 getPos() const { return m_pos; }		//情報の取得
 
+	virtual float getRadius()const;	//当たり判定の半径の取得
+	virtual Vec2 getCenter()const;	//当たり判定の中心位置取得
 private:
 	SceneMain* m_pMain;			//SceneMainのポインタ
 

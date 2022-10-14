@@ -6,7 +6,8 @@
 
 namespace
 {
-	constexpr int kShotInterval = 16;		//ショットの発射間隔
+	constexpr int kShotInterval = 20;		//ショットの発射間隔
+	constexpr float kRadius = 20.0;		//ショットの発射間隔
 }
 
 Enemy::Enemy()
@@ -27,7 +28,7 @@ void Enemy::update()
 {
 	int padState = GetJoypadInputState(DX_INPUT_KEY_PAD1);
 
-	////ショット処理
+	//ショット処理
 	//m_shotInterval--;
 	//if (m_shotInterval < 0)m_shotInterval = 0;
 
@@ -35,7 +36,7 @@ void Enemy::update()
 	//{
 	//	if (padState & PAD_INPUT_2)
 	//	{
-	//		if (m_pMain->createShotPlayer(getPos()))
+	//		if (m_pMain->createShotEnemy(getPos()))
 	//		{
 	//			m_shotInterval = kShotInterval;
 	//		}
@@ -61,4 +62,20 @@ void Enemy::update()
 void Enemy::draw()
 {
 	DrawBox(m_pos.x, m_pos.y, m_pos.x + m_size.x, m_pos.y + m_size.x, GetColor(255, 0, 0), false);
+	DrawCircle(getCenter().x, getCenter().y, getRadius(), GetColor(0, 0, 255), false);
+}
+float Enemy::getRadius()const
+{
+	return kRadius;
+}
+Vec2 Enemy::getCenter()const
+{
+	int sizeX = 0;
+	int sizeY = 0;
+
+	Vec2 result = m_pos;
+	result.x -= m_pos.x * 2;
+	result.y -= m_pos.y * 2;
+
+	return result;
 }
