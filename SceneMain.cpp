@@ -2,6 +2,7 @@
 #include "SceneMain.h"
 #include"SceneTitle.h"
 #include"ShotPlayer.h"
+#include"ShotEnemy.h"
 #include<cassert>
 
 
@@ -81,6 +82,19 @@ void SceneMain::draw()
 
 	//Œ»Ý‘¶Ý‚µ‚Ä‚¢‚é‹Ê‚Ì”‚ð•\Ž¦
 	DrawFormatString(100, 0, GetColor(0, 255, 255), "’e‚Ì”:%d", m_pShotVt.size());
+
+	if (isCol() == false)
+	{
+		DrawString(0, 500, "“–‚½‚Á‚½", GetColor(255, 255, 255));
+	}
+	if (isCol() == true)
+	{
+		DrawString(0, 600, "“–‚½‚Á‚Ä‚È‚¢", GetColor(255, 255, 255));
+	}
+	
+	DrawFormatString(0, 650, GetColor(0, 255, 255), "“GÀ•W:%f %f", m_enemy.getPos().x, m_enemy.getPos().y);
+	DrawFormatString(0, 700, GetColor(0, 255, 0), "’eÀ•W:%f %f", m_base.getPos().x, m_base.getPos().y);
+
 }
 
 bool SceneMain::createShotPlayer(Vec2 pos)
@@ -88,6 +102,17 @@ bool SceneMain::createShotPlayer(Vec2 pos)
 	ShotPlayer* pShot = new ShotPlayer;
 	pShot->start(pos);
 	m_pShotVt.push_back(pShot);
+
+	return true;
+}
+
+
+bool SceneMain::isCol()
+{	
+	if (m_base.getPos().x > m_enemy.getPos().x)return false;
+	//if (m_base.getBottomRight().x < m_enemy.getPos().x)return false;
+	if (m_base.getPos().y > m_enemy.getPos().y)return false;
+	//if (m_base.getBottomRight().y < m_enemy.getPos().y)return false;
 
 	return true;
 }
