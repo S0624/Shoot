@@ -62,20 +62,7 @@ void Enemy::update()
 void Enemy::draw()
 {
 	DrawBox(m_pos.x, m_pos.y, m_pos.x + m_size.x, m_pos.y + m_size.x, GetColor(255, 0, 0), false);
-	DrawCircle(getCenter().x, getCenter().y, getRadius(), GetColor(0, 0, 255), false);
-}
-float Enemy::getRadius()const
-{
-	return kRadius;
-}
-Vec2 Enemy::getCenter()const
-{
-	int sizeX = 0;
-	int sizeY = 0;
-
-	Vec2 result = m_pos;
-	result.x -= m_pos.x * 2;
-	result.y -= m_pos.y * 2;
-
-	return result;
+	//DrawBox(getPos().x, getPos().y, getPos().x + m_size.x, getPos().y + m_size.x, GetColor(0, 255, 0), false);
+	DrawBox(getPos().x +5, getPos().y + 5, getPos().x + m_size.x, getPos().y + m_size.x, GetColor(0, 255, 0), false);		//デバック
+	
 }
