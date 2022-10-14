@@ -12,8 +12,11 @@ public:
 	virtual void update();			// 更新
 	virtual void draw();			// 表示
 
-	virtual float getRadius()const;	//当たり判定の半径の取得
-	virtual Vec2 getCenter()const;	//当たり判定の中心位置取得
+	//virtual float getRadius()const;	//当たり判定の半径の取得
+	//virtual Vec2 getCenter()const;	//当たり判定の中心位置取得
+
+	Vec2 getPos() const { return m_pos; }		//情報の取得
+	Vec2 getBottomRight() const { return m_pos + m_size; }		//右上座標の取得
 
 	bool isExsist()const { return m_isExist; }	//存在するか
 
