@@ -4,6 +4,7 @@
 namespace
 {
 	constexpr int kPos_y = 20;
+	constexpr int kRadius = 10;
 }
 
 ShotBase::ShotBase()
@@ -11,7 +12,7 @@ ShotBase::ShotBase()
 	m_pos.x = 0.0f;
 	m_pos.y = 0.0f;
 	m_vec.y = 0.0f;
-
+	m_size = 0.0f;
 	m_isExist = false;
 }
 
@@ -34,5 +35,22 @@ void ShotBase::update()
 void ShotBase::draw()
 {
 	if (!m_isExist)return;
-	DrawLine(m_pos.x, m_pos.y, m_pos.x, m_pos.y + kPos_y, GetColor(255, 255, 255));    // ŽlŠpŒ`‚ð•`‰æ
+	DrawLine(m_pos.x, m_pos.y, m_pos.x, m_pos.y + kPos_y, GetColor(255, 255, 255));    // ’e‚ð•`‰æ
+	DrawCircle(getCenter().x, getCenter().y, getRadius(), GetColor(0, 255, 255), false);
+}
+
+float ShotBase::getRadius()const
+{
+	return kRadius;
+}
+Vec2 ShotBase::getCenter()const
+{
+	//int sizeX = 0;
+	//int sizeY = 0;
+	
+	//Vec2 result = m_pos;
+	//result.x += sizeX / 2;
+	//result.y += sizeY / 2;
+
+	return m_pos;
 }
