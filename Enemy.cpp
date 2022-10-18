@@ -13,7 +13,8 @@ namespace
 Enemy::Enemy()
 {
 	m_pMain = nullptr;
-	m_shotInterval = 0;
+	//m_shotInterval = 0;
+	m_isDead = false;
 }
 
 void Enemy::init()
@@ -21,7 +22,9 @@ void Enemy::init()
 	m_pos.x = 620;
 	m_pos.y = 10;
 	m_vec.x = 2.5f;
+
 	m_size.x = 40;
+	m_size.y = 40;
 }
 
 void Enemy::update()
@@ -62,8 +65,10 @@ void Enemy::update()
 
 void Enemy::draw()
 {
+	if (m_isDead) return;
 	DrawBox(m_pos.x, m_pos.y, m_pos.x + m_size.x, m_pos.y + m_size.x, GetColor(255, 0, 0), false);
-	//DrawBox(getPos().x, getPos().y, getPos().x + m_size.x, getPos().y + m_size.x, GetColor(0, 255, 0), false);
-	DrawBox(getPos().x +5, getPos().y + 5, getPos().x + m_size.x, getPos().y + m_size.x, GetColor(0, 255, 0), false);		//チェック用
+	
+	//デバッグ用
 	DrawFormatString(0, 450, GetColor(0, 255, 255), "敵座標:%f %f", getPos().x, getPos().y);
+	DrawFormatString(0, 425, GetColor(0, 255, 255), "敵座標:%f %f", getBottomRight().x, getBottomRight().y);
 }
