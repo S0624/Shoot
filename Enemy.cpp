@@ -13,7 +13,6 @@ namespace
 Enemy::Enemy()
 {
 	m_pMain = nullptr;
-	//m_shotInterval = 0;
 	m_isDead = false;
 }
 
@@ -67,8 +66,4 @@ void Enemy::draw()
 {
 	if (m_isDead) return;
 	DrawBox(m_pos.x, m_pos.y, m_pos.x + m_size.x, m_pos.y + m_size.x, GetColor(255, 0, 0), false);
-	
-	//デバッグ用
-	DrawFormatString(0, 450, GetColor(0, 255, 255), "敵座標:%f %f", getPos().x, getPos().y);
-	DrawFormatString(0, 425, GetColor(0, 255, 255), "敵座標:%f %f", getBottomRight().x, getBottomRight().y);
 }

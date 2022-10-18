@@ -29,7 +29,5 @@ private:
 	Vec2 m_vec;
 	Vec2 m_size;
 
-	//int m_shotInterval;			//ƒVƒ‡ƒbƒg‚Ì”­ŽËŠÔŠu
-
 	bool m_isDead;
 };
