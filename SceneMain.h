@@ -27,12 +27,6 @@ public:
 private:
 	bool m_isEnd;
 
-	float basePosX;
-	float basePosY;
-	float baseDownX;
-	float baseDownY;
-
-	//ShotBase m_base;
 	Player m_player;
 	Enemy m_enemy;
 
