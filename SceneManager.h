@@ -2,6 +2,7 @@
 
 #include "SceneTitle.h"
 #include "SceneMain.h"
+#include "SceneResult.h"
 
 class SceneManager
 {
@@ -11,6 +12,7 @@ public:
 	{
 		kSceneKindTitle,		//タイトル
 		kSceneKindMain,			//ゲームメイン画面
+		kSceneKindResult,			//ゲームメイン画面
 
 	}SceneKind;
 
@@ -18,8 +20,8 @@ public:
 	SceneManager();
 	virtual ~SceneManager(){}
 
-	//void init(SceneKind kind = kSceneKindTitle);
-	void init(SceneKind kind = kSceneKindMain);
+	void init(SceneKind kind = kSceneKindTitle);
+	//void init(SceneKind kind = kSceneKindMain);
 	void end();
 
 	void update();
@@ -30,4 +32,5 @@ private:
 	
 	SceneTitle m_title;
 	SceneMain m_main;
+	SceneResult m_result;
 };
