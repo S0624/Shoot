@@ -1,5 +1,6 @@
 #pragma once
 #include"Vec2.h"
+#include"Enemy.h"
 
 class SceneMain;
 
@@ -15,6 +16,7 @@ public:
 	
 	void update();				//ˆ—
 	void draw();				//•`‰æ
+	void end();
 
 	Vec2 getPos() const { return m_pos; }		//î•ñ‚Ìæ“¾
 
@@ -25,5 +27,7 @@ private:
 	Vec2 m_vec;
 	Vec2 m_size;
 	
+	Enemy m_enemy;
+
 	int m_shotInterval;			//ƒVƒ‡ƒbƒg‚Ì”­ËŠÔŠu
 };
