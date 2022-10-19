@@ -69,7 +69,7 @@ void Enemy::update()
 void Enemy::draw()
 {
 	if (m_isDead) return;
-	DrawBox(m_pos.x, m_pos.y, m_pos.x + m_size.x, m_pos.y + m_size.x, GetColor(255, 0, 0), false);
+	DrawBox(m_pos.x, m_pos.y, m_pos.x + m_size.x, m_pos.y + m_size.x, GetColor(255, 0, 0), false);				//•`‰æ
 }
 
 void Enemy::end()

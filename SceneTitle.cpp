@@ -12,8 +12,7 @@ void SceneTitle::update()
 	int padState = GetJoypadInputState(DX_INPUT_KEY_PAD1);
 	if (padState & PAD_INPUT_4)
 	{
-		//main‚ÉØ‚è‘Ö‚¦
-		m_isEnd = true;
+		m_isEnd = true;					//main‚ÉØ‚è‘Ö‚¦
 	}
 }
 

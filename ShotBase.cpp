@@ -1,7 +1,6 @@
 #include"DxLib.h"
 #include"ShotBase.h"
 
-
 ShotBase::ShotBase()
 {
 	m_pos.x = 0.0f;

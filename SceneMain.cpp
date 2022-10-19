@@ -9,22 +9,15 @@
 namespace
 {
 	int kPosX = 0;						//“G‚ÌêŠ‚ğ‚¸‚ç‚·ˆ×‚Ì•Ï”
-	constexpr int kEnemyNum = 5;		//“G‚Ì”
-	bool kCheck = false;		//€–S”»’è‚ğ“n‚·‚½‚ß‚Ì•Ï”
+	constexpr int kEnemyNum = 6;		//“G‚Ì”
+	bool kCheck = false;				//€–S”»’è‚ğ“n‚·‚½‚ß‚Ì•Ï”
 	
-	Enemy m_enemy[kEnemyNum];
-	Enemy m_penemy;
-
-
-
-	//////////////////////
-	//int u = 200;
-	
+	Enemy m_enemy[kEnemyNum];			//“G‚Ì”z—ñ
 }
 
 SceneMain::SceneMain()
 {
-	m_isEnd = false;
+	m_isEnd = false;					//‰Šú‰»
 }
 
 void SceneMain::init()
@@ -64,12 +57,12 @@ void SceneMain::update()
 	{
 		enemy.update();
 
-		int enemuNum = kEnemyNum;
+		int enemuNum = kEnemyNum;			//“G‚Ì¶‘¶”
 		for (int i = 0; i < kEnemyNum; i++)
 		{
 			if (m_enemy[i].isDead() == true)
 			{
-				enemuNum -= 1;
+				enemuNum -= 1;				//“G‚É“–‚½‚Á‚½‚ç”‚ğˆê‚ÂŒ¸‚ç‚·
 			}
 		}
 
@@ -79,7 +72,7 @@ void SceneMain::update()
 			int padState = GetJoypadInputState(DX_INPUT_KEY_PAD1);
 			if (padState & PAD_INPUT_2)
 			{
-				m_isEnd = true;
+				m_isEnd = true;						//Bƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚½‚çƒŠƒUƒ‹ƒg‚ÉƒV[ƒ“‚ğØ‚è‘Ö‚¦‚é
 			}
 		}
 
@@ -91,24 +84,23 @@ void SceneMain::update()
 			assert(pShot);				//ƒoƒO‚ª‚ ‚Á‚½‚ç‚í‚´‚Æ~‚ß‚éˆ—
 			pShot->update();
 
-			if (pShot->getPos().x > enemy.getBottomRight().x ||
+			if (pShot->getPos().x > enemy.getBottomRight().x ||				//shot‚Æ“G‚Ì“–‚½‚è”»’è
 				pShot->getBottomRight().x < enemy.getPos().x ||
 				pShot->getPos().y > enemy.getBottomRight().y ||
 				pShot->getBottomRight().y < enemy.getPos().y)
 			{
-				kCheck = false;
+				kCheck = false;												//“–‚½‚Á‚Ä‚¢‚È‚©‚Á‚½‚çfalse‚ğ•Ô‚·
 			}
 			else
 			{
 				/*DrawFormatString(0, 0, GetColor(0, 255, 255), "“–‚½‚Á‚Ä‚é");*/
-				kCheck = true;
+				kCheck = true;												//“–‚½‚Á‚Ä‚¢‚½‚çtrue‚ğ•Ô‚·
 			}
 
 			if (isCol() == true)			//€–S‚µ‚Ä‚¢‚é‚©ƒ`ƒFƒbƒN
 			{
 				enemy.Dead();				//€–S‚µ‚Ä‚¢‚½‚çDead‚Étrue‚ğ‚¢‚ê‚é
 			}
-			else {}
 
 
 			//if (m_enemy.isDead() == true);
@@ -133,7 +125,7 @@ void SceneMain::update()
 
 void SceneMain::draw()
 {
-	m_player.draw();
+	m_player.draw();						//•`‰æ
 
 	for (auto& enemy : m_enemy)
 	{
@@ -166,11 +158,11 @@ bool SceneMain::isCol()				//“–‚½‚è”»’è
 	//	if (m_enemy[i].isDead()) return false;				//ƒGƒlƒ~[‚ª€–S‚µ‚Ä‚¢‚½‚ç“–‚½‚ç‚È‚¢
 	//}
 
-	if (kCheck == false)
+	if (kCheck == false)			//kCeck‚Éfalse‚ª“ü‚Á‚Ä‚¢‚½‚çfalse‚ğ•Ô‚·
 	{
 		return false;
 	}
-	else
+	else							//kCeck‚Étrue‚ª“ü‚Á‚Ä‚¢‚½‚çtrue‚ğ•Ô‚·
 	{
 		return true;
 	}

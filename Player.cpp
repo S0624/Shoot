@@ -15,7 +15,7 @@ namespace
 Player::Player()
 {
 	m_pMain = nullptr;
-	m_shotInterval = 0;
+	m_shotInterval = 5;
 }
 
 void Player::init()
@@ -81,7 +81,7 @@ void Player::update()
 
 void Player::draw()
 {
-	DrawBox(m_pos.x, m_pos.y, m_pos.x + m_size.x, m_pos.y + m_size.x, GetColor(0, 255, 255), false);
+	DrawBox(m_pos.x, m_pos.y, m_pos.x + m_size.x, m_pos.y + m_size.x, GetColor(0, 255, 255), false);					//•`‰æ
 }
 
 void Player::end()

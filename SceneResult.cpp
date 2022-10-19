@@ -13,7 +13,7 @@ void SceneResult::update()
 	int padState = GetJoypadInputState(DX_INPUT_KEY_PAD1);
 	if (padState & PAD_INPUT_3)
 	{
-		DxLib_End();				//ゲームを終了する
+		DxLib_End();				//ボタンが押されたらゲームを終了する
 	}
 }
 

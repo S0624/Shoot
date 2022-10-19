@@ -10,7 +10,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     ChangeWindowMode(Game::kWindowMode);
 
     // ウインドウ名設定
-    SetMainWindowText("ゲーム名");
+    SetMainWindowText("shot");
 
     // 画面サイズの設定
     SetGraphMode(Game::kScreenWindth, Game::kScreenHeight, Game::kColorDepth);
@@ -33,8 +33,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
         // 画面のクリア
         ClearDrawScreen();
 
-        scene.update();
-        scene.draw();
+        scene.update(); 
+        scene.draw();               //描画
 
         // 裏画面を表画面を入れ替える
         ScreenFlip();
