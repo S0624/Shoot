@@ -6,13 +6,20 @@
 #include"ShotEnemy.h"
 #include<cassert>
 
-
 namespace
 {
-	//ショットの発射間隔
-	constexpr int kShotInterval = 16;
-	constexpr int kEnemyNum = 3;		//敵の数
-	bool kCheck = false;		//敵の数
+	int kPosX = 0;						//敵の場所をずらす為の変数
+	constexpr int kEnemyNum = 5;		//敵の数
+	bool kCheck = false;		//死亡判定を渡すための変数
+	
+	Enemy m_enemy[kEnemyNum];
+	Enemy m_penemy;
+
+
+
+	//////////////////////
+	//int u = 200;
+	
 }
 
 SceneMain::SceneMain()
@@ -25,12 +32,23 @@ void SceneMain::init()
 	m_player.init();
 	m_player.setMain(this);
 
-	m_enemy.init();
-	m_enemy.setMain(this);
+	for (auto& enemy : m_enemy)
+	{
+		kPosX += 200;
+		enemy.init();
+		enemy.setMain(this);
+		enemy.setPos(kPosX);
+	}
 }
 
 void SceneMain::end()
 {
+	m_player.end();
+	for (auto& enemy : m_enemy)
+	{
+		enemy.end();
+	}
+
 	for (auto& pShot : m_pShotVt)
 	{
 		assert(pShot);				//バグがあったらわざと止める処理
@@ -42,77 +60,94 @@ void SceneMain::end()
 void SceneMain::update()
 {
 	m_player.update();
-	m_enemy.update();
-
-	if (m_enemy.isDead() == true)		//エネミーが死亡したらクリア
+	for (auto& enemy : m_enemy)
 	{
-		DrawString(520, 380, "クリアです。Bボタン or X key を押してください。", GetColor(255, 255, 255));
-		int padState = GetJoypadInputState(DX_INPUT_KEY_PAD1);
-		if (padState & PAD_INPUT_2)
-		{
-			m_isEnd = true;
-		}
-	}
+		enemy.update();
 
-	std::vector<ShotBase*>::iterator it = m_pShotVt.begin();
-	while (it != m_pShotVt.end())
-	{
-		auto& pShot = (*it);
-
-		assert(pShot);				//バグがあったらわざと止める処理
-		pShot->update();
-
-		if (pShot->getPos().x > m_enemy.getBottomRight().x||
-			pShot->getBottomRight().x < m_enemy.getPos().x||
-			pShot->getPos().y > m_enemy.getBottomRight().y||
-			pShot->getBottomRight().y < m_enemy.getPos().y)
+		int enemuNum = kEnemyNum;
+		for (int i = 0; i < kEnemyNum; i++)
 		{
-			kCheck = false;
-		}
-		else
-		{
-			kCheck = true;
+			if (m_enemy[i].isDead() == true)
+			{
+				enemuNum -= 1;
+			}
 		}
 
-		if (isCol() == true)			//死亡しているかチェック
+		if (enemuNum == 0)		//エネミーが全部死亡したらクリア
 		{
-			m_enemy.Dead();
+			DrawString(520, 380, "クリアです。Bボタン or X key を押してください。", GetColor(255, 255, 255));
+			int padState = GetJoypadInputState(DX_INPUT_KEY_PAD1);
+			if (padState & PAD_INPUT_2)
+			{
+				m_isEnd = true;
+			}
 		}
-		else {}
 
-		if (m_enemy.isDead() == true);
-		else {}
-
-		if (isCol() == false);
-		else {}
-
-		
-		if (!pShot->isExsist())
+		std::vector<ShotBase*>::iterator it = m_pShotVt.begin();
+		while (it != m_pShotVt.end())
 		{
-			delete pShot;
-			pShot = nullptr;
+			auto& pShot = (*it);
 
-			//vectorの要素削除
-			it = m_pShotVt.erase(it);		//指定した場所を削除する
-			continue;					//削除したときループの先頭に戻る
+			assert(pShot);				//バグがあったらわざと止める処理
+			pShot->update();
+
+			if (pShot->getPos().x > enemy.getBottomRight().x ||
+				pShot->getBottomRight().x < enemy.getPos().x ||
+				pShot->getPos().y > enemy.getBottomRight().y ||
+				pShot->getBottomRight().y < enemy.getPos().y)
+			{
+				kCheck = false;
+			}
+			else
+			{
+				/*DrawFormatString(0, 0, GetColor(0, 255, 255), "当たってる");*/
+				kCheck = true;
+			}
+
+			if (isCol() == true)			//死亡しているかチェック
+			{
+				enemy.Dead();				//死亡していたらDeadにtrueをいれる
+			}
+			else {}
+
+
+			//if (m_enemy.isDead() == true);
+			//else {}
+
+			/*if (isCol() == false);
+			else {}*/
+
+			if (!pShot->isExsist())
+			{
+				delete pShot;
+				pShot = nullptr;
+
+				//vectorの要素削除
+				it = m_pShotVt.erase(it);		//指定した場所を削除する
+				continue;					//削除したときループの先頭に戻る
+			}
+			it++;
 		}
-		it++;
 	}
 }
-
 
 void SceneMain::draw()
 {
 	m_player.draw();
-	m_enemy.draw();
+
+	for (auto& enemy : m_enemy)
+	{
+		enemy.draw();
+	}
 
 	for (auto& pShot : m_pShotVt)
 	{
 		if (!pShot) continue;
 		pShot->draw();
 	}
-		//現在存在している玉の数を表示
-		DrawFormatString(0, 25, GetColor(0, 255, 255), "弾の数:%d", m_pShotVt.size());
+	//現在存在している玉の数を表示
+	DrawFormatString(0, 25, GetColor(0, 255, 255), "弾の数:%d", m_pShotVt.size());
+
 }
 
 bool SceneMain::createShotPlayer(Vec2 pos)
@@ -124,10 +159,13 @@ bool SceneMain::createShotPlayer(Vec2 pos)
 	return true;
 }
 
-
 bool SceneMain::isCol()				//当たり判定
 {
-	if (m_enemy.isDead()) return false;
+	//for (int i = 0; i < kCheck; i++)
+	//{
+	//	if (m_enemy[i].isDead()) return false;				//エネミーが死亡していたら当たらない
+	//}
+
 	if (kCheck == false)
 	{
 		return false;

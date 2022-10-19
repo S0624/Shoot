@@ -28,7 +28,7 @@ private:
 	bool m_isEnd;
 
 	Player m_player;
-	Enemy m_enemy;
+	//Enemy m_enemy;
 
 	std::vector< ShotBase*> m_pShotVt;
 	std::vector< ShotBase*> m_eShotVt;
