@@ -86,8 +86,6 @@ void SceneManager::update()
 			break;
 		case SceneManager::kSceneKindResult:
 			m_result.end();
-			m_title.init();
-			m_kind = kSceneKindTitle;
 			break;
 		default:
 			assert(false);
