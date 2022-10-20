@@ -33,22 +33,6 @@ void Enemy::setPos(int posX)
 
 void Enemy::update()
 {
-	//int padState = GetJoypadInputState(DX_INPUT_KEY_PAD1);
-
-	////ショット処理
-	//m_shotInterval--;
-	//if (m_shotInterval < 0)m_shotInterval = 0;
-
-	//if (m_shotInterval <= 0)
-	//{
-	//	if (padState & PAD_INPUT_2)
-	//	{
-	//		if (m_pMain->createShotEnemy(getPos()))
-	//		{
-	//			m_shotInterval = kShotInterval;
-	//		}
-	//	}
-	//}
 	m_pos.x += m_vec.x;										//エネミーの移動
 
 	if (m_pos.x < 0.0f)										//画面外に行かないように設定

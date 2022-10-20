@@ -68,7 +68,6 @@ void SceneMain::update()
 				enemyNum -= 1;				//“G‚É“–‚½‚Á‚½‚ç”‚ğˆê‚ÂŒ¸‚ç‚·
 			}
 		}
-		//DrawFormatString(0, 0, GetColor(0, 255, 255), "’e‚Ì”:%d", m_enemyNum);
 		m_enemyNum = enemyNum;
 
 

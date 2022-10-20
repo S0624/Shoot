@@ -30,9 +30,7 @@ void Player::init()
 void Player::update()
 {
 	int padState = GetJoypadInputState(DX_INPUT_KEY_PAD1);
-
-	//if (m_enemy.isDead() == false)		//エネミーが死亡したらクリア
-	{ 									//ショット処理
+									//ショット処理
 		m_shotInterval--;
 		if (m_shotInterval < 0)
 		{
@@ -80,7 +78,6 @@ void Player::update()
 			m_pos.x = Game::kScreenWindth - m_size.x;
 			m_vec.x = 0;
 		}
-	}
 }
 
 void Player::draw()
