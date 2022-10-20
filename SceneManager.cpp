@@ -6,7 +6,7 @@ SceneManager::SceneManager()
 {
 	m_kind = kSceneKindTitle;			//シーンの種類
 	m_kind = kSceneKindMain;			//シーンの種類
-	m_kind = kSceneKindResult;			//シーンの種類
+	m_kind = kSceneKindResultLose;			//シーンの種類
 }
 
 
@@ -21,8 +21,8 @@ void SceneManager::init(SceneKind kind )
 	case SceneManager::kSceneKindMain:
 		m_main.init();
 		break;
-	case SceneManager::kSceneKindResult:
-		m_result.init();
+	case SceneManager::kSceneKindResultLose:
+		m_lose.init();
 		break;
 	default:
 		assert(false);
@@ -40,8 +40,8 @@ void SceneManager::end()
 	case SceneManager::kSceneKindMain:
 		m_main.end();
 		break;
-	case SceneManager::kSceneKindResult:
-		m_result.end();
+	case SceneManager::kSceneKindResultLose:
+		m_lose.end();
 		break;
 	default:
 		assert(false);
@@ -62,9 +62,9 @@ void SceneManager::update()
 		m_main.update();
 		isEnd = m_main.isEnd();
 		break;
-	case SceneManager::kSceneKindResult:
-		m_result.update();
-		isEnd = m_result.isEnd();
+	case SceneManager::kSceneKindResultLose:
+		m_lose.update();
+		isEnd = m_lose.isEnd();
 		break;
 	default:
 		assert(false);
@@ -81,11 +81,11 @@ void SceneManager::update()
 			break;
 		case SceneManager::kSceneKindMain:
 			m_main.end();
-			m_result.init();
-			m_kind = kSceneKindResult;
+			m_lose.init();
+			m_kind = kSceneKindResultLose;
 			break;
-		case SceneManager::kSceneKindResult:
-			m_result.end();
+		case SceneManager::kSceneKindResultLose:
+			m_lose.end();
 			break;
 		default:
 			assert(false);
@@ -104,8 +104,8 @@ void SceneManager::draw()
 	case SceneManager::kSceneKindMain:
 		m_main.draw();
 		break;
-	case SceneManager::kSceneKindResult:
-		m_result.draw();
+	case SceneManager::kSceneKindResultLose:
+		m_lose.draw();
 		break;
 	default:
 		assert(false);

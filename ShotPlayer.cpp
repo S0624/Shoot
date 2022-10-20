@@ -14,7 +14,6 @@ void ShotPlayer::start(Vec2 pos)
 
 void ShotPlayer::update()
 {
-	if (!m_isExist)return;
 	m_pos += m_vec;
 
 	if (m_pos.y < 0)

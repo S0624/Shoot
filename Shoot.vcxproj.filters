@@ -60,7 +60,7 @@
     <ClCompile Include="ShotEnemy.cpp">
       <Filter>ソース ファイル\Shot</Filter>
     </ClCompile>
-    <ClCompile Include="SceneResult.cpp">
+    <ClCompile Include="SceneResultLose.cpp">
       <Filter>ソース ファイル\Scene</Filter>
     </ClCompile>
   </ItemGroup>
@@ -98,7 +98,7 @@
     <ClInclude Include="ShotEnemy.h">
       <Filter>ヘッダー ファイル\Shot</Filter>
     </ClInclude>
-    <ClInclude Include="SceneResult.h">
+    <ClInclude Include="SceneResultLose.h">
       <Filter>ヘッダー ファイル\Scene</Filter>
     </ClInclude>
   </ItemGroup>

@@ -62,8 +62,6 @@ void Enemy::update()
 		m_pos.x = Game::kScreenWindth - m_size.x;
 		m_vec.x *= -1.0f;
 	}
-
-
 }
 
 void Enemy::draw()

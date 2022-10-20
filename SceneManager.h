@@ -2,7 +2,7 @@
 
 #include "SceneTitle.h"
 #include "SceneMain.h"
-#include "SceneResult.h"
+#include "SceneResultLose.h"
 
 class SceneManager
 {
@@ -12,7 +12,7 @@ public:
 	{
 		kSceneKindTitle,		//タイトル
 		kSceneKindMain,			//ゲームメイン画面
-		kSceneKindResult,			//ゲームメイン画面
+		kSceneKindResultLose,			//リザルト画面
 
 	}SceneKind;
 
@@ -32,5 +32,5 @@ private:
 	
 	SceneTitle m_title;
 	SceneMain m_main;
-	SceneResult m_result;
+	SceneResultLose m_lose;
 };

@@ -16,7 +16,7 @@ public:
 	Vec2 getPos() const { return m_pos; }		//情報の取得
 	Vec2 getBottomRight() const { return m_pos + m_size; }		//右上座標の取得
 
-	bool isExsist()const { return m_isExist; }	//存在するか
+	//bool isExsist()const { return m_isExist; }	//存在するか
 
 protected:
 	Vec2	m_pos;					// 表示位置

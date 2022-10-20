@@ -17,19 +17,25 @@ public:
 	void update();
 	void draw();
 
+	int survivalNum() { return m_enemyNum; };
+	int ShotNum() { return shotCountDown; }
+
 	bool isEnd() { return m_isEnd; }
 	
 	bool createShotPlayer(Vec2 pos);
-	//bool createShotEnemy(Vec2 pos);
 
 	bool isCol();            //Collision
 
+
 private:
-	bool m_isEnd;
 
 	Player m_player;
-	//Enemy m_enemy;
+	int m_enemyNum;
 
+	int shotNumCount;
+	int shotCountDown;
+
+	bool m_isEnd;
+	// ƒVƒ‡ƒbƒg
 	std::vector< ShotBase*> m_pShotVt;
-	std::vector< ShotBase*> m_eShotVt;
 };

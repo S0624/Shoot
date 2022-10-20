@@ -140,7 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Enemy.cpp" />
-    <ClCompile Include="SceneResult.cpp" />
+    <ClCompile Include="SceneResultLose.cpp" />
     <ClCompile Include="ShotEnemy.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -154,7 +154,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Enemy.h" />
-    <ClInclude Include="SceneResult.h" />
+    <ClInclude Include="SceneResultLose.h" />
     <ClInclude Include="ShotEnemy.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="Player.h" />

@@ -10,6 +10,7 @@ namespace
 	constexpr float kSpeedMax = 10.5f;		//プレイヤーの最大移動速度
 
 	constexpr int kShotInterval = 10;		//ショットの発射間隔
+	SceneMain m_main;
 }
 
 Player::Player()
@@ -30,7 +31,7 @@ void Player::update()
 {
 	int padState = GetJoypadInputState(DX_INPUT_KEY_PAD1);
 
-	if (m_enemy.isDead() == false)		//エネミーが死亡したらクリア
+	//if (m_enemy.isDead() == false)		//エネミーが死亡したらクリア
 	{ 									//ショット処理
 		m_shotInterval--;
 		if (m_shotInterval < 0)
@@ -40,11 +41,14 @@ void Player::update()
 
 		if (m_shotInterval <= 0)
 		{
-			if (padState & PAD_INPUT_1)
+			//if (m_main.ShotNum() > 0)
 			{
-				if (m_pMain->createShotPlayer(getPos() + m_size / 2))
+				if (padState & PAD_INPUT_1)
 				{
-					m_shotInterval = kShotInterval;
+					if (m_pMain->createShotPlayer(getPos() + m_size / 2))
+					{
+						m_shotInterval = kShotInterval;
+					}
 				}
 			}
 		}

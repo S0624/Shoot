@@ -18,7 +18,7 @@ void SceneTitle::update()
 
 void SceneTitle::draw()
 {
-	DrawString(620, 380, "タイトル画面", GetColor(255, 255, 255));			//タイトル画面の表示
+	DrawString(545, 380, "20回以内に敵をすべて倒してください。", GetColor(255, 255, 255));			//タイトル画面の表示
 	DrawString(620, 480, "Y or KEY Aボタン", GetColor(255, 255, 255));			//タイトル画面の表示
 	
 	DrawBox(0, 0, 25, 25, GetColor(255,255,255), false);    // 四角形を描画
